@@ -1,6 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthProvider extends ChangeNotifier {
   final _firebase = FirebaseAuth.instance;
@@ -30,10 +29,11 @@ class AuthProvider extends ChangeNotifier {
         // Sign the user in (or link) with the credential
         await _firebase.signInWithCredential(credential);
       },
-      timeout: const Duration(seconds: 60),
+      timeout: const Duration(seconds: 120),
       codeAutoRetrievalTimeout: (String verificationId) {
         print("Timed out please resend code again");
       },
     );
+    notifyListeners();
   }
 }

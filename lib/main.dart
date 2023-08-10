@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:provider/provider.dart';
 import 'package:whatsapp/firebase_options.dart';
+import 'package:whatsapp/providers/AuthProvider.dart';
 import 'package:whatsapp/screens/LoginScreen.dart';
 
 void main() async {
@@ -8,7 +10,13 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(const MyApp());
+
+  runApp(MultiProvider(
+    providers: [
+      ListenableProvider<AuthProvider>(create: (_) => AuthProvider()),
+    ],
+    child: const MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
