@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:whatsapp/providers/AuthProvider.dart';
 
-class ChatSelectScreen extends StatefulWidget{
+class ChatSelectScreen extends StatefulWidget {
   const ChatSelectScreen({super.key});
 
   @override
@@ -15,7 +15,8 @@ class _ChatSelectScreenState extends State<ChatSelectScreen> {
     return Scaffold(
       appBar: AppBar(
         actions: [
-          IconButton(onPressed: () {}, icon: const Icon(Icons.camera_alt_outlined)),
+          IconButton(
+              onPressed: () {}, icon: const Icon(Icons.camera_alt_outlined)),
           IconButton(onPressed: () {}, icon: const Icon(Icons.search)),
           IconButton(onPressed: () {}, icon: const Icon(Icons.more_vert)),
         ],
@@ -43,21 +44,22 @@ class _ChatSelectScreenState extends State<ChatSelectScreen> {
           ),
         ],
       ),
-
       body: Consumer<AuthProvider>(
         builder: (provider, context, child) {
           return SingleChildScrollView(
-            child: ListView.builder(
-              itemCount: 999,
-              itemBuilder: (BuildContext context, index) {
-                return GestureDetector(
-                  onTap: () {}, //her biri için fonksiyon
-                  child: ListTile(
-                    // leading: CircleAvatar(backgroundImage: ), buraya image çakarsın
-                    title: Text('Her bir sohbet'),
-                  ),
-                );
-              },
+            child: Expanded(
+              child: ListView.builder(
+                itemCount: 999,
+                itemBuilder: (BuildContext context, index) {
+                  return GestureDetector(
+                    onTap: () {}, //her biri için fonksiyon
+                    child: ListTile(
+                      // leading: CircleAvatar(backgroundImage: ), buraya image çakarsın
+                      title: Text('Her bir sohbet'),
+                    ),
+                  );
+                },
+              ),
             ),
           );
         },

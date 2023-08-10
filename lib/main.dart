@@ -5,6 +5,7 @@ import 'package:whatsapp/firebase_options.dart';
 import 'package:whatsapp/providers/AuthProvider.dart';
 import 'package:whatsapp/screens/LoginScreen.dart';
 import 'package:whatsapp/screens/RegisterScreen.dart';
+import 'package:whatsapp/screens/chat_select_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -32,7 +33,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const LoginScreen(),
+      home: const ChatSelectScreen(),
     );
   }
 }
