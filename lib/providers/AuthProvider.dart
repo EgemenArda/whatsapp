@@ -1,10 +1,18 @@
+import 'dart:io';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class AuthProvider extends ChangeNotifier {
   final _firebase = FirebaseAuth.instance;
   TextEditingController phoneController = TextEditingController();
-
+  final formKey = GlobalKey<FormState>();
+  var isLogin = true;
+  var isAuthenticating = false;
+  var enteredEmail = '';
+  var enteredPassword = '';
+  var enteredUsername = '';
+  File? selectedImage;
   void verifyNumber() async {
     final userCredential = await _firebase.verifyPhoneNumber(
       phoneNumber: phoneController.text,
