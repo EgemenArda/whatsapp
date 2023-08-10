@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
 import 'package:whatsapp/firebase_options.dart';
-import 'package:whatsapp/providers/AuthProvider.dart';
 import 'package:whatsapp/screens/LoginScreen.dart';
 import 'package:whatsapp/screens/RegisterScreen.dart';
 
@@ -13,9 +12,7 @@ void main() async {
   );
 
   runApp(MultiProvider(
-    providers: [
-      ListenableProvider<AuthProvider>(create: (_) => AuthProvider()),
-    ],
+    providers: [],
     child: const MyApp(),
   ));
 }
