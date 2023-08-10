@@ -1,0 +1,118 @@
+{
+  "project_info": {
+    "project_number": "496753137177",
+    "project_id": "flutter-chat-app-d4079",
+    "storage_bucket": "flutter-chat-app-d4079.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:496753137177:android:829ae004c59bad69bbbc88",
+        "android_client_info": {
+          "package_name": "com.example.firebase_course"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "496753137177-58t8r54po70gnt19kj395ruo2keo7100.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBDph_UnbcvJO9hMqb0nToib2Y4m-ZSjrE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "496753137177-58t8r54po70gnt19kj395ruo2keo7100.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "496753137177-2uj5uh6onsdpab1dck7cmsqp7fqr7ff7.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.firebaseCourse.RunnerTests"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:496753137177:android:b376fcedb98ec9c7bbbc88",
+        "android_client_info": {
+          "package_name": "com.example.whatsapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "496753137177-58t8r54po70gnt19kj395ruo2keo7100.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBDph_UnbcvJO9hMqb0nToib2Y4m-ZSjrE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "496753137177-58t8r54po70gnt19kj395ruo2keo7100.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "496753137177-2uj5uh6onsdpab1dck7cmsqp7fqr7ff7.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.firebaseCourse.RunnerTests"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:496753137177:android:09cc64149cd600e1bbbc88",
+        "android_client_info": {
+          "package_name": "com.example.whatsapp_clone"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "496753137177-58t8r54po70gnt19kj395ruo2keo7100.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBDph_UnbcvJO9hMqb0nToib2Y4m-ZSjrE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "496753137177-58t8r54po70gnt19kj395ruo2keo7100.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "496753137177-2uj5uh6onsdpab1dck7cmsqp7fqr7ff7.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.firebaseCourse.RunnerTests"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
