@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
 import 'package:whatsapp/firebase_options.dart';
+import 'package:whatsapp/providers/AuthProvider.dart';
 import 'package:whatsapp/screens/LoginScreen.dart';
 import 'package:whatsapp/screens/RegisterScreen.dart';
 
@@ -12,7 +13,9 @@ void main() async {
   );
 
   runApp(MultiProvider(
-    providers: [],
+    providers: [
+      ChangeNotifierProvider(create: (context) => AuthProvider()),
+    ],
     child: const MyApp(),
   ));
 }
@@ -29,7 +32,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: AuthScreen(),
+      home: const LoginScreen(),
     );
   }
 }
