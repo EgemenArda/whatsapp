@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:provider/provider.dart';
 import 'package:whatsapp/providers/AuthProvider.dart';
+import 'package:whatsapp/screens/LoginScreen.dart';
 import 'package:whatsapp/screens/widgets/user_image_picker.dart';
 
 final _firebase = FirebaseAuth.instance;
@@ -34,7 +35,7 @@ class _AuthScreenState extends State<AuthScreen> {
                       child: Padding(
                         padding: const EdgeInsets.all(16),
                         child: Form(
-                          key: provider.formKey,
+                          key: provider.formKeyRegister,
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
                             children: [
@@ -106,12 +107,14 @@ class _AuthScreenState extends State<AuthScreen> {
                                       backgroundColor: Theme.of(context)
                                           .colorScheme
                                           .primaryContainer),
-                                  child: const Text("Signup"),
+                                  child: const Text("Sign Up"),
                                 ),
                               if (!provider.isAuthenticating)
                                 TextButton(
-                                  onPressed: () {},
-                                  child: Text(
+                                  onPressed: () {
+                                    Navigator.of(context).push(MaterialPageRoute(builder: (ctx) => const LoginScreen()));
+                                  },
+                                  child: const Text(
                                     "I already have an account.",
                                   ),
                                 ),

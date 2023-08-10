@@ -10,7 +10,8 @@ class AuthProvider extends ChangeNotifier {
   final _firebase = FirebaseAuth.instance;
 
   TextEditingController phoneController = TextEditingController();
-  final formKey = GlobalKey<FormState>();
+  final formKeyRegister = GlobalKey<FormState>();
+  final formKeyLogin = GlobalKey<FormState>();
   var isLogin = true;
   var isAuthenticating = false;
   var enteredEmail = '';
@@ -19,7 +20,7 @@ class AuthProvider extends ChangeNotifier {
   var enteredUsername = '';
   File? selectedImage;
   void register(context) async {
-    formKey.currentState!.save();
+    formKeyRegister.currentState!.save();
     try {
       final userCredential = await _firebase.createUserWithEmailAndPassword(
           email: enteredEmail, password: enteredPassword);
