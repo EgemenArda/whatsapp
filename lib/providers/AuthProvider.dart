@@ -1,47 +1,53 @@
 import 'dart:io';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class AuthProvider extends ChangeNotifier {
   final _firebase = FirebaseAuth.instance;
+
   TextEditingController phoneController = TextEditingController();
   final formKey = GlobalKey<FormState>();
   var isLogin = true;
   var isAuthenticating = false;
   var enteredEmail = '';
   var enteredPassword = '';
+
   var enteredUsername = '';
   File? selectedImage;
-  void verifyNumber() async {
-    final userCredential = await _firebase.verifyPhoneNumber(
-      phoneNumber: phoneController.text,
-      verificationCompleted: (PhoneAuthCredential credential) async {
-        // ANDROID ONLY!
+  void register(context) async {
+    formKey.currentState!.save();
+    try {
+      final userCredential = await _firebase.createUserWithEmailAndPassword(
+          email: enteredEmail, password: enteredPassword);
+      final storageRef = FirebaseStorage.instance
+          .ref()
+          .child('user-images')
+          .child('${userCredential.user!.uid}.jpg');
 
-        // Sign the user in (or link) with the auto-generated credential
-        await _firebase.signInWithCredential(credential);
-      },
-      verificationFailed: (FirebaseAuthException error) {
-        if (error.code == 'invalid-phone-number') {
-          print('The provided phone number is not valid.');
-        }
-      },
-      codeSent: (String verificationId, int? forceResendingToken) async {
-        String smsCode = 'xxxx';
+      await storageRef.putFile(selectedImage!);
+      final imageUrl = await storageRef.getDownloadURL();
 
-        // Create a PhoneAuthCredential with the code
-        PhoneAuthCredential credential = PhoneAuthProvider.credential(
-            verificationId: verificationId, smsCode: smsCode);
+      FirebaseFirestore.instance
+          .collection('users')
+          .doc(userCredential.user!.uid)
+          .set({
+        'username': enteredUsername,
+        'email': enteredEmail,
+        'image_url': imageUrl,
+      });
+    } on FirebaseAuthException catch (error) {
+      ScaffoldMessenger.of(context).clearSnackBars();
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(error.message ?? 'Auth failed.'),
+        ),
+      );
 
-        // Sign the user in (or link) with the credential
-        await _firebase.signInWithCredential(credential);
-      },
-      timeout: const Duration(seconds: 120),
-      codeAutoRetrievalTimeout: (String verificationId) {
-        print("Timed out please resend code again");
-      },
-    );
-    notifyListeners();
+      isAuthenticating = false;
+    }
   }
 }

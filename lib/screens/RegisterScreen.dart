@@ -99,12 +99,14 @@ class _AuthScreenState extends State<AuthScreen> {
                                 const CircularProgressIndicator(),
                               if (!provider.isAuthenticating)
                                 ElevatedButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    provider.register(context);
+                                  },
                                   style: ElevatedButton.styleFrom(
                                       backgroundColor: Theme.of(context)
                                           .colorScheme
                                           .primaryContainer),
-                                  child: Text("Signup"),
+                                  child: const Text("Signup"),
                                 ),
                               if (!provider.isAuthenticating)
                                 TextButton(
