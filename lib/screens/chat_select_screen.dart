@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:whatsapp/providers/AuthProvider.dart';
@@ -14,17 +15,35 @@ class _ChatSelectScreenState extends State<ChatSelectScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        toolbarHeight: 40,
+        backgroundColor: Colors.black87,
         actions: [
           IconButton(
               onPressed: () {}, icon: const Icon(Icons.camera_alt_outlined)),
           IconButton(onPressed: () {}, icon: const Icon(Icons.search)),
           IconButton(onPressed: () {}, icon: const Icon(Icons.more_vert)),
+          IconButton(
+              onPressed: () {
+                FirebaseAuth.instance.signOut();
+              },
+              icon: Icon(
+                Icons.exit_to_app,
+                color: Theme.of(context).colorScheme.primary,
+              ))
         ],
-        centerTitle: true,
-        title: const Text('WhatsApp'),
+        title: Text(
+          'WhatsApp',
+          style: TextStyle(
+            fontSize: 25,
+            fontWeight: FontWeight.bold,
+            color: Colors.black54,
+          ),
+        ),
         leading: null,
       ),
       bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        backgroundColor: Colors.grey,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.chat_outlined),
@@ -47,7 +66,8 @@ class _ChatSelectScreenState extends State<ChatSelectScreen> {
       body: Consumer<AuthProvider>(
         builder: (provider, context, child) {
           return SingleChildScrollView(
-            child: Expanded(
+            child: SizedBox(
+              height: 400,
               child: ListView.builder(
                 itemCount: 999,
                 itemBuilder: (BuildContext context, index) {
