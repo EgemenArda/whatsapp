@@ -51,4 +51,23 @@ class AuthProvider extends ChangeNotifier {
       isAuthenticating = false;
     }
   }
+
+  void login(context) async {
+    formKeyRegister.currentState!.save();
+    try {
+      isAuthenticating = true;
+      final userCredential = _firebase.signInWithEmailAndPassword(
+          email: enteredEmail, password: enteredPassword);
+      print(userCredential);
+    } on FirebaseAuthException catch (error) {
+      ScaffoldMessenger.of(context).clearSnackBars();
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(error.message ?? 'Auth failed.'),
+        ),
+      );
+
+      isAuthenticating = false;
+    }
+  }
 }

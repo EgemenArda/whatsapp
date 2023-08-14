@@ -99,7 +99,9 @@ class _LoginScreenState extends State<LoginScreen> {
                                 const CircularProgressIndicator(),
                               if (!provider.isAuthenticating)
                                 ElevatedButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    provider.login(context);
+                                  },
                                   style: ElevatedButton.styleFrom(
                                       backgroundColor: Theme.of(context)
                                           .colorScheme
