@@ -2,7 +2,7 @@ import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-
+import 'dart:ui_web';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -55,12 +55,13 @@ class AuthProvider extends ChangeNotifier {
   void login(context) {
     formKeyLogin.currentState!.save();
     try {
-      isAuthenticating = true;
+     
       final userCredential = _firebase.signInWithEmailAndPassword(
           email: enteredEmail, password: enteredPassword);
       print(userCredential);
     } on FirebaseAuthException catch (error) {
       ScaffoldMessenger.of(context).clearSnackBars();
+      print(error.message);
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(error.message ?? 'Auth failed.'),

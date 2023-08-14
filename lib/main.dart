@@ -46,7 +46,7 @@ class MyApp extends StatelessWidget {
             if (snapshot.hasData) {
               return const ChatSelectScreen();
             }
-            return const LoginScreen();
+            return const AuthScreen();
           },
         ));
   }
