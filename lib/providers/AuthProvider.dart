@@ -52,8 +52,8 @@ class AuthProvider extends ChangeNotifier {
     }
   }
 
-  void login(context) async {
-    formKeyRegister.currentState!.save();
+  void login(context) {
+    formKeyLogin.currentState!.save();
     try {
       isAuthenticating = true;
       final userCredential = _firebase.signInWithEmailAndPassword(

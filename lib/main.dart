@@ -30,6 +30,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
@@ -45,7 +46,7 @@ class MyApp extends StatelessWidget {
             if (snapshot.hasData) {
               return const ChatSelectScreen();
             }
-            return const AuthScreen();
+            return const LoginScreen();
           },
         ));
   }
